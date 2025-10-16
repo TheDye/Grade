@@ -1,0 +1,62 @@
+/* Grade calc futuristic style */
+:root{
+  --bg-1:#020217;--bg-2:#07102a;--bg-3:#001424;--accent-1:#00eaff;--accent-2:#7c3aed;--muted:rgba(255,255,255,0.65)
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial;background:linear-gradient(135deg,var(--bg-1),var(--bg-2));color:#e6eef8}
+.app-shell{min-height:100vh;padding-bottom:48px}
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:20px 28px}
+.brand{display:flex;gap:14px;align-items:center}
+.logo{width:54px;height:54px;background:linear-gradient(90deg,var(--accent-1),var(--accent-2));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;box-shadow:0 6px 40px rgba(0,234,255,0.08);transition:transform .45s,box-shadow .45s}
+.logo:hover{transform:translateY(-6px) rotate(-6deg);box-shadow:0 18px 60px rgba(124,58,237,0.18)}
+.title{font-family:'Orbitron',sans-serif;font-size:18px}
+.subtitle{font-size:12px;color:rgba(255,255,255,0.75)}
+.content{padding:18px}
+.left{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));backdrop-filter:blur(6px);border-radius:14px;padding:18px}
+.right{padding:18px}
+.result-box{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.04);min-height:220px;border-radius:14px;opacity:0;transform:translateY(6px);transition:opacity .35s,transform .35s}
+.result-box.visible{opacity:1;transform:translateY(0)}
+.btn-cta{background:linear-gradient(90deg,var(--accent-1),var(--accent-2));color:#001;border:none;padding:10px 18px}
+.btn-cta:hover{filter:brightness(1.03);transform:translateY(-3px)}
+input.form-control, select.form-select{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);color:#e6eef8}
+/* Placeholder color and ensure visibility even when the input is focused */
+input.form-control::placeholder{color:rgba(255,255,255,0.55);opacity:1;transition:color .18s,opacity .18s}
+/* Vendor-prefixed placeholders for wider browser support */
+input.form-control::-webkit-input-placeholder{color:rgba(255,255,255,0.55);opacity:1}
+input.form-control::-moz-placeholder{color:rgba(255,255,255,0.55);opacity:1}
+input.form-control:-ms-input-placeholder{color:rgba(255,255,255,0.55);opacity:1}
+input.form-control:-moz-placeholder{color:rgba(255,255,255,0.55);opacity:1}
+/* Keep placeholder visible and slightly brighter on focus */
+input.form-control:focus::placeholder{color:rgba(255,255,255,0.65);opacity:1}
+input.form-control:focus::-webkit-input-placeholder{color:rgba(255,255,255,0.65);opacity:1}
+input.form-control:focus::-moz-placeholder{color:rgba(255,255,255,0.65);opacity:1}
+input.form-control:focus:-ms-input-placeholder{color:rgba(255,255,255,0.65);opacity:1}
+.text-muted, small, .small{color:rgba(255,255,255,0.6) !important}
+.result-inner h4{color:#f8fbff}
+.result-inner #resultValue{color:#00fff0;font-weight:700}
+.btn, .btn-cta{transition:transform .18s ease,box-shadow .18s ease,background .18s ease}
+input.form-control:focus, select.form-select:focus{outline:none;box-shadow:0 10px 30px rgba(0,234,255,0.06);border-color:rgba(0,234,255,0.45)}
+@keyframes slowGradient{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+body.dark-mode{background:linear-gradient(135deg,#070918,#07102a)}
+@media (max-width:767px){.left,.right{padding:12px}}
+
+/* Mobile-specific tweaks */
+@media (max-width:900px){
+  .topbar{padding:12px 16px}
+  .title{font-size:16px}
+  .subtitle{font-size:11px}
+  .left{padding:12px}
+  .right{padding:12px;margin-top:16px}
+  /* Stack columns vertically on mobile */
+  .row.gx-4{flex-direction:column}
+  .col-lg-5, .col-lg-7{width:100%;}
+  /* Make buttons larger for tappability */
+  .btn, .btn-cta, .btn-sm{padding:12px 16px;font-size:15px}
+  input.form-control, select.form-select{font-size:16px;padding:12px}
+}
+
+/* Respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .logo, .btn, .btn-cta, input.form-control{transition:none !important}
+  .result-box{transition:none !important}
+}

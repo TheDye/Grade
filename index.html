@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <!-- iOS web app capable and theme-color for status bar -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#07102a">
+    <title>Grade calc</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="preload" href="./static/style.css" as="style">
+  <link rel="stylesheet" href="./static/style.css">
+  <meta name="description" content="Grade calc — lightweight, offline-capable grade calculator. Add to home screen on iOS/Android.">
+    <link rel="manifest" href="/manifest.json">
+  <!-- iOS home screen icon (prefer PNG) -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/static/icon-180.png">
+  <!-- fallback favicon -->
+  <link rel="icon" type="image/png" sizes="192x192" href="/static/icon-192.png">
+    <meta name="apple-mobile-web-app-title" content="Grade Calculator">
+  </head>
+  <body>
+    <div class="app-shell">
+      <div class="install-banner small text-muted text-center p-2">Tip: Support buynaa xD</div>
+      <header class="topbar d-flex align-items-center justify-content-between">
+        <div class="brand d-flex align-items-center gap-3">
+          <div class="logo">⚡</div>
+          <div>
+            <div class="title">Grade calc</div>
+            <div class="subtitle">Grade Calculator</div>
+          </div>
+        </div>
+        <div class="controls d-flex align-items-center gap-2">
+          <button id="exportBtn" class="btn btn-sm btn-outline-light">Export</button>
+          <button id="toggleTheme" class="btn btn-sm btn-outline-light">Dark</button>
+        </div>
+      </header>
+
+      <main class="container-lg content my-4">
+        <div class="row gx-4">
+          <section class="col-lg-5 left p-4 rounded-3">
+            <div class="mb-3">
+              <label class="form-label">Subject</label>
+              <select id="subjectSelect" class="form-select"></select>
+            </div>
+
+            <div class="mb-3 d-flex gap-2">
+              <input id="numGrades" type="number" class="form-control" min="1" value="3" aria-label="Number of grades">
+              <div class="d-flex gap-2">
+                <button id="addField" class="btn btn-outline-light">+</button>
+                <button id="removeField" class="btn btn-outline-light">–</button>
+              </div>
+              <button id="makeFields" class="btn btn-primary">Create</button>
+            </div>
+            <div class="mb-2 small text-muted">Tip: Press Enter to move to the next field.</div>
+            <div id="statusMsg" class="mt-2 small text-muted"></div>
+
+            <div class="mb-3">
+              <label class="form-label">Import (.txt)</label>
+              <div class="d-flex gap-2">
+                <input id="fileUpload" type="file" accept="text/plain,.txt" class="form-control form-control-sm">
+                <button id="importBtn" class="btn btn-outline-light btn-sm">Import</button>
+              </div>
+              <small class="text-muted">grade,weight</small>
+            </div>
+
+            <div id="fieldsContainer"></div>
+            <div class="mt-3">
+              <button id="calculateBtn" class="btn btn-cta">CALCULATE BRO</button>
+            </div>
+          </section>
+
+          <aside class="col-lg-7 right p-4">
+            <div id="result" class="result-box p-4 rounded-3">
+              <div class="result-inner">
+                <h4 class="mb-2">Your Result</h4>
+                <div id="resultValue" class="fs-4"></div>
+                <div id="resultDetails" class="mt-2 text-muted small"></div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </main>
+    </div>
+
+    <!-- main script deferred so parsing isn't blocked -->
+    <script src="./static/app.js" defer></script>
+  </body>
+</html>
